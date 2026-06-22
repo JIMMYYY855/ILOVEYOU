@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I love you❤️</title>
+    <style>
+        :root {
+            --primary: #ff7675;
+            --secondary: #fab1a0;
+            --bg: #ffeaa7;
+            --dark: #2d3436;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 { color: var(--primary); margin-bottom: 10px; }
+
+        /* Custom Goose Box */
+        .goose-box {
+            margin: 20px 0;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .goose-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .bounce { animation: bounce 0.5s ease; }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .bubble {
+            background: #f0f0f0;
+            padding: 12px;
+            border-radius: 15px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            min-height: 24px;
+            font-weight: bold;
+        }
+
+        .meter-container {
+            background: #dfe6e9;
+            border-radius: 10px;
+            height: 25px;
+            width: 100%;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .meter-fill {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* Buttons matching your design */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.1s, background 0.2s;
+        }
+        button:hover { background-color: #e17055; transform: translateY(-2px); }
+        button:active { transform: translateY(0); }
+
+        .hidden { display: none !important; }
+        
+        /* Quiz Styles */
+        .quiz-option {
+            background: #f1f2f6;
+            border: 2px solid #ced6e0;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .quiz-option:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+
+        /* Letter Styles */
+        .letter {
+            line-height: 1.6;
+            text-align: left;
+            white-space: pre-line;
+            font-size: 18px;
+            color: #4a4a4a;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<audio id="love-song" src="music.mp3" preload="auto" loop></audio>
+    <div id="game-section" class="container">
+        <h1>Keep weza Happy! 🪿</h1>
+        <p>You need to fill the Love Meter to 100% to unlock your surprise!</p>
+        
+        <div id="goose-bubble" class="bubble">Give me attention!</div>
+        
+        <div class="goose-box">
+            <img id="goose-image" class="goose-img" src="goose_default.png" alt="Cute Goose">
+        </div>
+
+        <div class="meter-container">
+            <div id="meter" class="meter-fill"></div>
+        </div>
+
+        <div class="btn-grid">
+            <button id="btn-hugs">🤗 Give Hugs</button>
+            <button id="btn-coffee">☕ Send Coffee</button>
+            <button id="btn-tease">😜 Tease</button>
+            <button id="btn-kisses">💋 Give Kisses</button>
+        </div>
+    </div>
+
+    <div id="quiz-section" class="container hidden">
+        <h1>The Us Survey🙈 </h1>
+        <p id="question-number" style="font-weight: bold; color: var(--primary);"></p>
+        <h3 id="question-text">Question loading...</h3>
+        <div id="options-container"></div>
+    </div>
+
+    <div id="letter-section" class="container hidden">
+        <h1>Happy Anniversary baby! ❤️</h1>
+        <div class="goose-box">
+            <img class="goose-img" src="us.png">
+        </div>
+        <p class="letter" id="love-letter-text">
+            Hey sweetheart, happy aniversary ya 7abibi!
+can't tell you how excited i wasss for you to see that. That's our second beautiful year that we've spent together, and they don't really feel like 2 they feel like alot more. throughout those years i got to know alot of you,and i could never js get enough. I am so happy we get to grow together. At this point i js can't imagine doing life without you. i never thought i'd love somebody that much. That somebody being you. you own my heart. you're smart,you're kind,you're adorable. andd not that i'd rlly love mentioning that rn butttt yesterday when u said ur a worse bf please dont do that again..because you're not bad to begin with aslan..problems happen sa3at mn 3andi mn 3andak and we get through'em. you've got me and i've got u our hands together and i believe it should be you and i against whatever problem dayman. you are perfect to me and u always would be you are all i ever wanted the whole idea of you is js soo exquisite to me. I'd like to thank you over and over again for staying by my side, for giving me the opportunity to have a belovedd partner whom i can tell everything and feel safe with,whoo is alsoo the closest to my heart,The only person tht i wouldn't reject their company no matter how it is i'm feeling,the type of person that when i tell please leave me alone i never ever mean it. Ya youssef u mean everything to me.All what matters. You let me be me. i want you to be sure i'm not leaving ur side ever. w i truly would always wish u all the best cuz it would make me feel awesome and proud to see u achieve whatever(it makes me feel so as well seeing u work hard) it is u want no matter how big aw how small as long as it's good for u.Thank you for everything ya 7abibi. Today isss supposedly about us and i dont rlly know how to ressonate the idea of that. Ba7ebak awi awi awi w rabena y5aleek leya.
+Yours forever,
+Jumana
+        </p>
+    </div>
+
+    <script>
+        let score = 0;
+        const gooseImg = document.getElementById('goose-image');
+        const bubble = document.getElementById('goose-bubble');
+        const meter = document.getElementById('meter');
+
+        // Your original goose button responses
+        const responses = {
+            hugs: { img: 'goose_hugs.png', text: 'I feel so loved!' },
+            coffee: { img: 'goose_coffee.png', text: 'Thank you,needed that.' },
+            tease: { img: 'goose_tease.png', text: "Hey! Don't make me bite you." },
+            kisses: { img: 'goose_kisses.png', text: '🤭🤭' }
+        };
+
+        function interact(type) {
+            if (score >= 100) return;
+            
+            gooseImg.src = responses[type].img;
+            bubble.textContent = responses[type].text;
+            
+            gooseImg.classList.remove('bounce');
+            void gooseImg.offsetWidth; 
+            gooseImg.classList.add('bounce');
+
+            score += 25; 
+            if (score > 100) score = 100;
+            meter.style.width = score + '%';
+
+            if (score === 100) {
+             document.getElementById('love-song').play();
+                setTimeout(() => {
+                    alert("🎉 Love Meter Full! Weza is pleased. Time for your quiz!");
+                    document.getElementById('game-section').classList.add('hidden');
+                    document.getElementById('quiz-section').classList.remove('hidden');
+                    loadQuestion();
+                }, 1200);
+            }
+        }
+
+        document.getElementById('btn-hugs').addEventListener('click', () => interact('hugs'));
+        document.getElementById('btn-coffee').addEventListener('click', () => interact('coffee'));
+        document.getElementById('btn-tease').addEventListener('click', () => interact('tease'));
+        document.getElementById('btn-kisses').addEventListener('click', () => interact('kisses'));
+
+
+        // --- 🧠 MIXED QUIZ & INPUT LOGIC ---
+        
+        // ⚠️ PASTE YOUR FORMSPREE / WEB3FORMS LINK HERE:
+        const EMAIL_ENDPOINT = "https://formspree.io/f/xdarogqd"; 
+
+        const quizQuestions = [
+            {
+                type: "choice",
+                q: "Which do u love most? cuz i felt threatened",
+                options: ["ME", "THT burger😗"],
+                correct: 0 
+            },
+            {
+                type: "choice",
+                q: "What is my favorite thing about you?",
+                options: ["Your smile", "Your eyes", "Everything", "Your scent"],
+                correct: 2
+            },
+            {
+                type: "text", // ✨ NEW TYPE: Text response question
+                q: "Imaginary scenario rn our kids js asked you about us.They went dad how did u and mum meet tell us about ur memories together.Why did u choose mum?"
+            },
+            {
+                type: "choice",
+                q: "How long have we been together?",
+                options: ["Not long enough", "2 Years", "An eternity in the best way", "All of the above"],
+                correct: 3
+            },
+            {
+                type: "text", // ✨ ANOTHER NEW TYPE: Text response
+                q: "What are things u think i changed about you when i came into ur life?"
+            },
+            {
+                type: "text", // ✨ ANOTHER NEW TYPE: Text response
+                q: "What was ur first impression of meee?🙃"
+            },
+            {
+                type: "choice",
+                q: "Matra7 ma....(which came first)",
+                options: ["yegri yerwi", "yegri yemshi", "yesri yemri"],
+                correct: 0 
+            },
+            {
+                type: "choice",
+                q: "What did i first 'steal' from u?",
+                options: ["Scrunch belgian chocolate with almonds 3adi", "your watch", "your heart🤨"],
+                correct: 0 
+            },
+            {
+                type: "choice",
+                q: "What do i see when i look into ur eyes?",
+                options: ["The fovea", "the iris", "the optical nerve","i know thats my man and i see my entire future"],
+                correct: 3 
+            },
+            {
+                type: "text", // ✨ ANOTHER NEW TYPE: Text response
+                q: "I text you at 3 am saying you up? what would u feel is coming? am bored,sad,miss u,hungry?"
+            },
+            {
+                type: "text", // ✨ ANOTHER NEW TYPE: Text response
+                q: "When loving me feels hard, what keeps u going?"
+            },
+            {
+                type: "text", // ✨ ANOTHER NEW TYPE: Text response
+                q: "what's smthn you'd do only because it's me?"
+            },
+            {
+                type: "text", // ✨ ANOTHER NEW TYPE: Text response
+                q: "is there something i give you, you didnt know you need?"
+            }        
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= quizQuestions.length) {
+                document.getElementById('quiz-section').classList.add('hidden');
+                document.getElementById('letter-section').classList.remove('hidden');
+                return;
+            }
+
+            const currentQ = quizQuestions[currentQuestionIndex];
+            document.getElementById('question-number').textContent = `Question ${currentQuestionIndex + 1} of ${quizQuestions.length}`;
+            document.getElementById('question-text').textContent = currentQ.q;
+            
+            const optionsDiv = document.getElementById('options-container');
+            optionsDiv.innerHTML = ''; // Clear out the container
+
+            // Check if it's a multiple choice question
+            if (currentQ.type === "choice") {
+                currentQ.options.forEach((option, index) => {
+                    const btn = document.createElement('div');
+                    btn.className = 'quiz-option';
+                    btn.textContent = option;
+                    btn.onclick = () => checkAnswer(index);
+                    optionsDiv.appendChild(btn);
+                });
+            } 
+            // Check if it's a text input question
+            else if (currentQ.type === "text") {
+                // Create textarea for long, heartfelt typed text
+                const textInput = document.createElement('textarea');
+                textInput.placeholder = "Type your answer here...";
+                textInput.style.width = "100%";
+                textInput.style.height = "100px";
+                textInput.style.padding = "10px";
+                textInput.style.borderRadius = "10px";
+                textInput.style.border = "2px solid #ced6e0";
+                textInput.style.boxSizing = "border-box";
+                textInput.style.fontSize = "16px";
+                textInput.style.fontFamily = "inherit";
+                textInput.style.marginBottom = "15px";
+                optionsDiv.appendChild(textInput);
+
+                // Create a styled Submit button
+                const submitBtn = document.createElement('button');
+                submitBtn.textContent = "Submit Answer 💖";
+                submitBtn.style.width = "100%";
+                
+                submitBtn.onclick = () => {
+                    const answerText = textInput.value.trim();
+                    if (answerText === "") {
+                        alert("Don't leave it blank! Type something sweet. 😉");
+                        return;
+                    }
+                    
+                    // Disable button instantly so they don't click it twice
+                    submitBtn.textContent = "Sending to her...";
+                    submitBtn.disabled = true;
+
+                    // Send answer to your email in the background
+                    fetch(EMAIL_ENDPOINT, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            question: currentQ.q,
+                            answer: answerText
+                        })
+                    })
+                    .then(() => {
+                        alert("Thanks babe! Onto the next one... 🥰");
+                        currentQuestionIndex++;
+                        loadQuestion();
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        // Fallback in case internet cuts out so the game doesn't break
+                        alert("Saved! Onto the next one... 🥰");
+                        currentQuestionIndex++;
+                        loadQuestion();
+                    });
+                };
+                optionsDiv.appendChild(submitBtn);
+            }
+        }
+
+        function checkAnswer(selectedIndex) {
+            const currentQ = quizQuestions[currentQuestionIndex];
+            if (selectedIndex === currentQ.correct) {
+                alert("Correct! 🥰");
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                alert("❌ Wrong! Try again, I know you know this!");
+            }
+        }
+    </script>
+</body>
+</html>
